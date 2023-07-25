@@ -21,6 +21,10 @@ const Carousel = () => {
         images={images}
         showBullets={true}
         showNavs={true}
+        slideDuration={2}
+        autoPlayDelay={3}
+        loop="true"
+        autoPlay="true"
       />
     </div>
   );

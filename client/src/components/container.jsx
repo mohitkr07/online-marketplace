@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import styles from "./container.module.css";
 import Header from "./utils/header";
 import Home from "./home/home";
+import MaksFooter from "./utils/maksFooter";
 
 const Container = () => {
   return (
@@ -15,6 +16,7 @@ const Container = () => {
           </Routes>
         </BrowserRouter>
       </Fragment>
+      <MaksFooter />
     </div>
   );
 };
