@@ -1,0 +1,124 @@
+:root{
+    --default-width: 72rem;
+    --theme-color: #068FFF;
+}
+
+/* --------Nav------- */
+.header{
+    height: 5rem;
+    width: 100%;
+    /* background-color: rgb(53, 133, 244); */
+    background-color: var(--theme-color);
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-content{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo{
+    width: auto;
+    height: 80%;
+    background-color: #fff;
+}
+.header-logo img{
+    height: 100%;
+}
+
+.header-location-search{
+    min-width: 50%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-location{
+    width: 30%;
+}
+.header-search{
+    width: 66%;
+}
+.header-location input, .header-search input{
+    width: 100%;
+    text-align: left;
+    padding: 0 5px;
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.1rem;
+}
+
+.header-actions{
+    min-width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: khaki; */
+    color: #fff;
+    font-size: 94%;
+    font-weight: bold;
+}
+.header-signin{
+    height: 2rem;
+    width: 5rem;
+    border: none;
+    outline: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.header-signin:hover{
+    background-color: rgb(232, 92, 45);
+    color: #fff;
+}
+
+.header-cart:hover{
+    cursor: pointer;
+}
+
+
+
+/* ---------Categories---------- */
+.categories{
+    width: 100%;
+    height: 10rem;
+    /* background-color: khaki; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.categories-content{
+    height: 100%;
+    width: 72rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories-items{
+    width: 8.2rem;
+    height: 100%;
+    /* background-color: orange; */
+}
+.items{
+    width: 95%;
+    height: 80%;
+    padding: 0.85rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-1 img, .item-2 img, .item-4 img, .item-5 img, .item-6 img, .item-7 img{
+    width: 100%;
+}
+.item-3 img{
+    height: 100%;
+}
