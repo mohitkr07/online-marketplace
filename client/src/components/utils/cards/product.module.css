@@ -1,3 +1,8 @@
+:root{
+    --default-width: 75rem;
+    --theme-color: #068FFF;
+}
+
 .product-card{
     /* margin: 0.3rem; */
     width: 25%;
@@ -42,6 +47,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+.product-2:hover .product-2-name{
+    color: #0866e1;
 }
 .product-2-content{
     width: 100%;
@@ -71,9 +81,9 @@
     padding: 5px 0;
 }
 
-.product-2-rating .rating{
+/* .product-2-rating .rating{
     background-color: #ff4545;
-}
+} */
 .rating-count{
     color: rgb(150, 150, 150);
 }

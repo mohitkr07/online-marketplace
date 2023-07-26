@@ -4,6 +4,7 @@ import styles from "./container.module.css";
 import Header from "./utils/header";
 import Home from "./home/home";
 import Search from "./search/search";
+import Profile from "./user/profile";
 import MaksFooter from "./utils/maksFooter";
 
 const Container = () => {
@@ -15,6 +16,7 @@ const Container = () => {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/search" element={<Search />} />
+            <Route exact path = "/user" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </Fragment>
