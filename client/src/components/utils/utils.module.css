@@ -41,11 +41,18 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
 .header-location{
     width: 30%;
 }
 .header-search{
     width: 66%;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-top-right-radius: 0.1rem;
+    border-bottom-right-radius: 0.1rem;
 }
 .header-location input, .header-search input{
     width: 100%;
@@ -54,7 +61,6 @@
     height: 2.5rem;
     border: none;
     outline: none;
-    border-radius: 0.1rem;
 }
 
 .header-actions{

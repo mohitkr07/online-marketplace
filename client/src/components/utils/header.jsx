@@ -17,6 +17,7 @@ const Header = () => {
 
           <div className={styles["header-search"]}>
             <input type="text" placeholder="Find in your Market" />
+            <i style={{"margin": "0 15px"}} class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
         <div className={styles["header-actions"]}>

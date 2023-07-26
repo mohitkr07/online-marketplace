@@ -1,0 +1,110 @@
+.product-card{
+    /* margin: 0.3rem; */
+    width: 25%;
+    min-height: 22rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease;
+}
+.product-card:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+.product-pic{
+    cursor: pointer;
+}
+.product-description p, .product-description span {
+    text-align: left;
+}
+
+.product-name{
+    padding: 0;
+    cursor: pointer;
+}
+
+.product-rating{
+    justify-content: flex-start;
+}
+
+.speciality{
+    font-size: 70%;
+    padding: 6px 0;
+    color: rgb(169, 168, 168);
+}
+.product-price{
+    cursor: pointer;
+}
+
+/* ------product 2--------- */
+.product-2{
+    min-height: 15rem;
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-2-content{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.product-2-imagine{
+    width: 17%;
+    display: flex;
+    align-items: center;
+}
+.product-2-imagine img{
+    max-width: 100%;
+}
+
+.product-2-description{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-2-rating{
+    font-size: 85%;
+    margin: 0 0 0.7rem  0;
+    padding: 5px 0;
+}
+
+.product-2-rating .rating{
+    background-color: #ff4545;
+}
+.rating-count{
+    color: rgb(150, 150, 150);
+}
+
+.product-2-cost{
+    width: 30%;
+    display: flex;
+}
+.product-2-cost-details{
+    height: fit-content;
+    width: fit-content;
+}
+.product-2-price h2{
+    width: 100%;
+    text-align: left;
+}
+.product-2-discounts{
+    padding: 5px;
+}
+.product-2-discounts span{
+    display: flex;
+    height: 1.2rem;
+}
+.product-2-discounts span p{
+    display: flex;
+    align-items: end;
+}
+.feature-list{
+    font-size: 90%;
+}
+.feature-list li{
+    list-style: circle;
+}
+
