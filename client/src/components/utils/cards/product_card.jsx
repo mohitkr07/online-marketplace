@@ -34,26 +34,26 @@ const Product_Card = (props) => {
         </div>
         <div className={styles["product-rating"]}>
           <span
-            style={{ "background-color": rateColor }}
+            style={{ "backgroundColor": rateColor }}
             className={styles["rating"]}
           >
             {props.rating + " "}
-            <i class="fa-solid fa-star fa-xs" />
+            <i className="fa-solid fa-star fa-xs" />
           </span>
-          <span style={{ "text-align": "left", color: "grey" }}>
+          <span style={{ "textAlign": "left", color: "grey" }}>
             ({props.ratingCount})
           </span>
         </div>
         <div className={styles["product-price"]}>
-          <p style={{ "font-weight": "bold" }}>
+          <p style={{ "fontWeight": "bold" }}>
             ₹{props.price}{" "}
             <span
               style={{
                 color: "grey",
-                "text-decoration": "line-through",
-                "margin-left": "3px",
-                "font-weight": "lighter",
-                "font-size": "85%",
+                "textDecoration": "lineThrough",
+                "marginLeft": "3px",
+                "fontWeight": "lighter",
+                "fontSize": "85%",
               }}
             >
               ₹{props.original}
@@ -61,10 +61,10 @@ const Product_Card = (props) => {
             <span
               style={{
                 color: "green",
-                "margin-left": "10px",
-                "font-weight": "bold",
-                "font-size": "90%",
-                "font-size": "80%",
+                "marginLeft": "10px",
+                "fontWeight": "bold",
+                "fontSize": "90%",
+                "fontSize": "80%",
               }}
             >
               {Math.ceil(

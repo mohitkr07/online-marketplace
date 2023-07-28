@@ -96,13 +96,11 @@
 
 /* ---------Categories---------- */
 .categories{
-    /* width: 100%; */
+    width: 100%;
     height: 9rem;
-    /* background-color: khaki; */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 8px;
     background-color: #fff;
 }
 .categories-content{

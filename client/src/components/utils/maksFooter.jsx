@@ -10,13 +10,13 @@ const MaksFooter = () => {
                 target="_blank"
                 href="https://www.linkedin.com/in/mohitkumar-mahto-7016311b7/"
               >
-                <i class="fa-brands fa-linkedin-in" />
+                <i className="fa-brands fa-linkedin-in" />
               </a>
               <a target="_blank" href="https://github.com/mohitkr07">
-              <i class="fa-brands fa-github" />
+              <i className="fa-brands fa-github" />
               </a>
               <a target="_blank" href="https://www.instagram.com/mohit_kr07/">
-              <i class="fa-brands fa-instagram" />
+              <i className="fa-brands fa-instagram" />
               </a>
             </div>
             <ul className={styles["list-inline"]}>

@@ -16,6 +16,7 @@ const Profile = () => {
 
   const handleChange = (e) => {
     setInfo({ ...profileInfo, [e.target.name]: e.target.value });
+    console.log(e.target.value)
   };
   const setEdit = (e) => {
     if (e.target.name == "personal") setEditName(!editName);
@@ -31,16 +32,16 @@ const Profile = () => {
             <img src="images/profile/male1.svg"></img>
           </div>
           <div className={styles["info"]}>
-            <p style={{ "font-size": "75%" }}>Hello,</p>
-            <p style={{ "font-weight": "bold" }}>Mohit</p>
+            <p style={{ fontSize: "75%" }}>Hello,</p>
+            <p style={{ fontWeight: "bold" }}>Mohit</p>
           </div>
         </div>
         <div className={styles["settings"]}>
           <div className={styles["account-settings"]}>
             <h3>
               <i
-                style={{ color: "#068FFF", "font-size": "1.2rem" }}
-                class="fa-solid fa-user"
+                style={{ color: "#068FFF", fontSize: "1.2rem" }}
+                className="fa-solid fa-user"
               ></i>
               Account Settings
             </h3>
@@ -51,8 +52,8 @@ const Profile = () => {
           </div>
           <div className={styles["log-out"]}>
             <i
-              style={{ color: "#068FFF", "font-size": "1.2rem" }}
-              class="fa-solid fa-power-off"
+              style={{ color: "#068FFF", fontSize: "1.2rem" }}
+              className="fa-solid fa-power-off"
             ></i>
             <h3>Logout</h3>
           </div>

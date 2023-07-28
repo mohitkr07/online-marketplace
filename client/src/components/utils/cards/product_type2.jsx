@@ -30,7 +30,7 @@ const Product_type2 = (props) => {
           </div>
           <div className={styles1["product-2-rating"]}>
             <span style={{background: rateColor}} className={`${styles["rating"]} ${styles1["rating"]}`}>
-              {props.rating} <i class="fa-solid fa-star fa-xs" />
+              {props.rating} <i className="fa-solid fa-star fa-xs" />
             </span>
             <span className={styles1["rating-count"]}>
               {props.ratingCount} Ratings
@@ -53,20 +53,20 @@ const Product_type2 = (props) => {
               <span>
                 <p
                   style={{
-                    "margin-right": "10px",
-                    "text-decoration": "line-through",
-                    color: "rgb(150, 150, 150)",
-                    "font-weight": "lighter",
-                    "font-size": "95%",
+                    "marginRight": "10px",
+                    "textDecoration": "lineThrough",
+                    "color": "rgb(150, 150, 150)",
+                    "fontWeight": "lighter",
+                    "fontSize": "95%",
                   }}
                 >
                   ₹{Intl.NumberFormat("en-US").format(props.mrp)}
                 </p>
                 <p
                   style={{
-                    "font-size": "75%",
-                    color: "green",
-                    "font-weight": "bold",
+                    "fontSize": "75%",
+                    "color": "green",
+                    "fontWeight": "bold",
                   }}
                 >
                   {Math.ceil(((props.mrp - props.price) / props.mrp) * 100)}%
