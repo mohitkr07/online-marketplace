@@ -7,6 +7,7 @@ import Search from "./search/search";
 import Profile from "./user/profile";
 import MaksFooter from "./utils/maksFooter";
 import SellerPage from "./seller/sellerPage";
+import SellerDash from "./seller/sellerDash/sellerDash";
 
 const Container = () => {
   return (
@@ -53,6 +54,7 @@ const Container = () => {
                 </>
               }
             />
+            <Route exact path="/sellerprofile" element={<SellerDash />} />
           </Routes>
           <MaksFooter />
         </BrowserRouter>

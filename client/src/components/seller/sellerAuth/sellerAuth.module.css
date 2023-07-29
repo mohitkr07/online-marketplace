@@ -1,0 +1,134 @@
+.register, .login{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 5px;
+    max-width: 35rem;
+    height: fit-content;
+    padding: 2rem;
+    margin-top: 3.5rem;
+}
+.span{
+    width: 100%;
+    display: flex;
+    margin: 0.5rem 0;
+    flex-wrap: wrap;
+}
+
+.span p, .address p{
+    width: 5rem;
+    text-align: right;
+    margin-right: 6px;
+    height: 2.4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 90%;
+    font-weight: bold;
+}
+.address{
+    display: flex;
+    width: 100%;
+}
+
+.address span{
+    width: calc(100% - 6rem);
+    flex-grow: 100;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.street{
+    width: 100%;
+}
+.state, .city, .postal-code, .country{
+    width: 48%;
+    margin: 0.5rem 0 0 0;
+}
+
+input{
+    height: 2.4rem;
+    border: 1px solid #f9ddca;
+    outline: none;
+    border-radius: 2px;
+    padding: 0 10px;
+    background-color: rgb(240, 248, 255);
+}
+input:focus{
+    border: 1px solid #008bfd
+}
+
+.submit-btn{
+    height: 2.4rem;
+    padding: 0 4rem;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #0380e6;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.submit-btn:hover{
+    background-color: #008bfd;
+    font-size: bold;
+}
+.title{
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+}
+
+
+/* login */
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+}
+.form input{
+    margin: 0.8rem 0;
+    height: 2.8rem;
+    border: 1px solid #cde9ff;
+}
+.form input:focus{
+    border:1px solid #008bfd;
+}
+.login-btn{
+    margin: 0.8rem 0 0.5rem 0 ;
+    border: none;
+    height: 2.4rem;
+    color: #fff;
+    cursor: pointer;
+    background-color: rgb(236, 114, 0);
+    transition: 0.3s ease;
+}
+.login-btn:hover{
+    background-color: rgb(255, 133, 19);
+    /* font-weight: bold; */
+}
+
+.title2{
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.title2 p{
+    margin-top: 0.5rem;
+    color: #9f9f9f;
+}
+.btn{
+    margin: 0.4rem 0 1rem 0;
+    height: 2.5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.btn:hover{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    font-weight: bold;
+}

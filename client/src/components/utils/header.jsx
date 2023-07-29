@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-dom"
+import { useNavigate } from "react-router-dom";
 import styles from "./utils.module.css";
 import Auth from "../authentication/auth";
 
 const Header = (props) => {
+  const navigate = useNavigate();
   const [log, setLog] = useState(false);
   const [showAuth, setAuth] = useState(false);
 
@@ -15,9 +16,9 @@ const Header = (props) => {
     setAuth(rec);
   };
 
-  const handleAddShop={
-
-  }
+  const handleAddShop = () => {
+    navigate("/citypage");
+  };
 
   return (
     <>
@@ -45,7 +46,12 @@ const Header = (props) => {
           <div className={styles["header-actions"]}>
             {log ? (
               <div className={styles["header-profile-options"]}>
-                <a style={{textDecoration: "none" , color: "#fff"}} href="/user">Mohit</a>
+                <a
+                  style={{ textDecoration: "none", color: "#fff" }}
+                  href="/user"
+                >
+                  Mohit
+                </a>
               </div>
             ) : null}
             <span
