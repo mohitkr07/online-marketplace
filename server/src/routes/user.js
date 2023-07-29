@@ -1,11 +1,15 @@
 const express = require("express");
 const router = new express.Router();
 const User = require("../models/user");
+const sendMail = require("../config/sendMail");
 
 require("dotenv").config();
 
+router.get("/api/user", async (req, res) => {
+  res.send("hi");
+});
 
-router.get("/user", async (req, res) => {});
+router.get("/mail", sendMail);
 
 router.post("/api/signup", async (req, res) => {
   const user = new User(req.body);

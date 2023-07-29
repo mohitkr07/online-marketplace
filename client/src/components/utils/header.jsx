@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-dom"
 import styles from "./utils.module.css";
 import Auth from "../authentication/auth";
 
@@ -13,6 +14,10 @@ const Header = (props) => {
   const closeAuth = async (rec) => {
     setAuth(rec);
   };
+
+  const handleAddShop={
+
+  }
 
   return (
     <>
@@ -46,6 +51,7 @@ const Header = (props) => {
             <span
               className={styles["header-add-shop"]}
               style={{ cursor: "pointer" }}
+              onClick={handleAddShop}
             >
               <i className="fa-solid fa-shop" style={{ marginRight: "6px" }} />
               Add Your Shop

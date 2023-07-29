@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import styles from "./auth.module.css";
 
 const Signup = (props) => {
-  const [otpSent, setOtp] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
   const [signupData, setSignup] = useState({
     firstName: "",
     lastName: "",
     mobile: "+91 ",
-    otp: "",
+    email: "",
+    password: "",
   });
+  const [otp, setOtp] = useState("");
 
   const postData = async () => {
     const res = await fetch("/api/signup", {
@@ -24,7 +26,7 @@ const Signup = (props) => {
   };
 
   const sendOTP = () => {
-    setOtp(!otpSent);
+    setOtpSent(!otpSent);
   };
 
   const handleSubmit = () => {
@@ -70,6 +72,13 @@ const Signup = (props) => {
             onChange={handleChange}
             placeholder="Enter email"
           />
+          <input
+            type="password"
+            name="password"
+            value={signupData.password}
+            onChange={handleChange}
+            placeholder="Enter Password"
+          />
         </>
       )}
       {otpSent && (
@@ -77,8 +86,8 @@ const Signup = (props) => {
           style={{ marginBottom: "10px" }}
           type="text"
           name="otp"
-          onChange={handleChange}
-          value={signupData.otp}
+          onChange={e=>setOtp(e.target.value)}
+          value={otp}
           placeholder="Enter OTP"
         />
       )}
@@ -132,10 +141,9 @@ const Signup = (props) => {
             width: "100%",
             textAlign: "center",
             marginTop: "10px",
-            cursor: "pointer"
-      
+            cursor: "pointer",
           }}
-          onClick={(e) => setOtp(false)}
+          onClick={(e) => setOtpSent(false)}
         >
           Back
         </span>
