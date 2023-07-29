@@ -144,3 +144,26 @@
 .add-product button:hover{
     background-color: rgb(255, 131, 14);
 }
+
+
+/* my products */
+.my-products{
+    width: 100%;
+}
+.my-products-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.my-products-table tr th{
+    border: 1px solid;
+
+}
+.my-products tr td{
+    border: 1px solid;
+    text-align: center;
+}
+.my-products h2{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
