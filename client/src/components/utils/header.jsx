@@ -8,11 +8,51 @@ const Header = (props) => {
   const [log, setLog] = useState(false);
   const [showAuth, setAuth] = useState(false);
 
+  const [profile, setProfile] = useState({
+    firstName: "",
+    lastName: "",
+    gender: "",
+    email: "",
+    mobile: "",
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const res = await fetch("/api/user", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    setProfile(data.user);
+    setLog(true);
+  };
+
+  const logOut = async () => {
+    const res = await fetch("/api/logout", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
+  const handleLogout = () => {
+    logOut();
+  };
+
   const handleAuth = () => {
     setAuth(true);
   };
 
   const closeAuth = async (rec) => {
+    fetchData();
     setAuth(rec);
   };
 
@@ -50,7 +90,7 @@ const Header = (props) => {
                   style={{ textDecoration: "none", color: "#fff" }}
                   href="/user"
                 >
-                  Mohit
+                  {profile.firstName}
                 </a>
               </div>
             ) : null}
@@ -73,11 +113,17 @@ const Header = (props) => {
               <p style={{ marginLeft: "6px", height: "fitContent" }}>Cart</p>
             </div>
             {log ? (
-              <>
-                <div className={styles["header-more"]}>
-                  <p>More</p>
-                </div>
-              </>
+              // <>
+              //   <div className={styles["header-more"]}>
+              //     <p style={{cursor: "pointer"}} onClick={e=>logOut}>Logout</p>
+              //   </div>
+              // </>
+              <button
+                onClick={handleLogout}
+                className={styles["header-signin"]}
+              >
+                Logout
+              </button>
             ) : (
               <button onClick={handleAuth} className={styles["header-signin"]}>
                 Sign in

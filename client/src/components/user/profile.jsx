@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./profile.module.css";
 
 const Profile = () => {
@@ -16,12 +16,46 @@ const Profile = () => {
 
   const handleChange = (e) => {
     setInfo({ ...profileInfo, [e.target.name]: e.target.value });
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
   const setEdit = (e) => {
     if (e.target.name == "personal") setEditName(!editName);
     else if (e.target.name == "email") setEditEmail(!editEmail);
     else if (e.target.name == "mobile") setEditMobile(!editMobile);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const res = await fetch("/api/user", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    setInfo(data.user);
+  };
+
+  const updateData = async () => {
+    const res = await fetch("/api/user", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(profileInfo),
+    });
+
+    const data = await res.json();
+    console.log(data);
+  };
+
+  const handleSave = (e) => {
+    updateData();
+    setEdit(e);
   };
 
   return (
@@ -33,7 +67,7 @@ const Profile = () => {
           </div>
           <div className={styles["info"]}>
             <p style={{ fontSize: "75%" }}>Hello,</p>
-            <p style={{ fontWeight: "bold" }}>Mohit</p>
+            <p style={{ fontWeight: "bold" }}>{profileInfo.firstName}</p>
           </div>
         </div>
         <div className={styles["settings"]}>
@@ -90,11 +124,15 @@ const Profile = () => {
               onChange={handleChange}
               name="lastName"
             />
+
+            {/* personal save button */}
             {editName ? (
               <input
                 className={styles["save-button"]}
                 type="button"
                 value="Save"
+                name="personal"
+                onClick={handleSave}
               />
             ) : null}
           </div>
@@ -108,6 +146,7 @@ const Profile = () => {
                 type="radio"
                 onChange={handleChange}
                 value="Male"
+                checked={profileInfo.gender == "Male"}
                 name="gender"
               />
               Male
@@ -118,6 +157,7 @@ const Profile = () => {
                 type="radio"
                 onChange={handleChange}
                 value="Female"
+                checked={profileInfo.gender == "Female"}
                 name="gender"
               />
               Female
@@ -141,11 +181,15 @@ const Profile = () => {
               name="email"
               onChange={handleChange}
             />
+
+            {/* email save button */}
             {editEmail ? (
               <input
                 className={styles["save-button"]}
                 type="button"
                 value="Save"
+                name="email"
+                onClick={handleSave}
               />
             ) : null}
           </div>
@@ -171,11 +215,14 @@ const Profile = () => {
               name="mobile"
               onChange={handleChange}
             />
+            {/* mobile save button */}
             {editMobile ? (
               <input
                 className={styles["save-button"]}
                 type="button"
                 value="Save"
+                name="mobile"
+                onClick={handleSave}
               />
             ) : null}
           </div>

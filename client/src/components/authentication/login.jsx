@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import styles from "./auth.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(false);
   const [loginData, setLogin] = useState({
     mobile: "",
     email: "",
-    otp: "",
+    password: "",
   });
 
   const handleClick = () => {
@@ -16,11 +18,26 @@ const Login = (props) => {
     setLogin({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  // const HandleLogin = () => {
-  //   if (user) {
-  //     return <>Login</>;
-  //   } else return <>Send OTP</>;
-  // };
+  const HandleLogin = async (e) => {
+    await postData(e);
+    props.Logged(false);
+  };
+
+  const postData = async (e) => {
+    const res = await fetch("/api/login", {
+      method: "post",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    });
+
+    const data = await res.json();
+    if (data.message == "success") {
+      navigate("/");
+    }
+  };
 
   const authswitch = () => {
     props.switchTo(true);
@@ -40,7 +57,7 @@ const Login = (props) => {
       {user && (
         <input
           type="text"
-          name="otp"
+          name="password"
           onChange={handleChange}
           placeholder="Enter Password"
           style={{ marginBottom: "10px" }}
@@ -64,7 +81,7 @@ const Login = (props) => {
         <button
           className={styles["sign-in-button"]}
           name="login"
-          onClick={handleClick}
+          onClick={HandleLogin}
         >
           Login
         </button>
@@ -85,7 +102,7 @@ const Login = (props) => {
             textAlign: "right",
             color: "#068FFF",
             cursor: "pointer",
-            fontSize: "85%"
+            fontSize: "85%",
           }}
           name="signup"
           onClick={(e) => setUser(false)}

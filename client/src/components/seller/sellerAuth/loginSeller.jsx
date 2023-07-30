@@ -7,11 +7,29 @@ const LoginSeller = (props) => {
     password: "",
   });
 
-  const handleChange = (e) => {
-    setCred({ ...cred, [e.target.name]: e.target.value });
+  const postData = async () => {
+    const res = await fetch("/seller/login", {
+      method: "post",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cred),
+    });
+    const data = await res.json();
+    if (data.message == "success") {
+      console.log(data.message);
+    }
   };
 
-  const handleLogin = () => {};
+  const handleChange = (e) => {
+    setCred({ ...cred, [e.target.name]: e.target.value });
+    
+  };
+
+  const handleLogin = () => {
+    postData();
+  };
   const switchtoRegister = () => {
     props.switchTo(false);
   };
@@ -36,7 +54,9 @@ const LoginSeller = (props) => {
           value={cred.password}
           onChange={handleChange}
         />
-        <p style={{ fontSize: "80%", color: "#008bfd", cursor: "pointer" }}>Forgot Password?</p>
+        <p style={{ fontSize: "80%", color: "#008bfd", cursor: "pointer" }}>
+          Forgot Password?
+        </p>
         <button className={styles["login-btn"]} onClick={handleLogin}>
           Login
         </button>

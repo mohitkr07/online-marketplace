@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
@@ -15,11 +16,12 @@ app.use(
     origin: true,
   })
 );
-
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(userRoute);
 app.use(sellerRoute);
+
 
 app.listen(port, () => {
   console.log("Server is running on port", port);

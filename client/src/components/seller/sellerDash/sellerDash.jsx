@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./sellerDash.module.css";
 import PersonalInfo from "./personalInfo";
@@ -6,8 +6,13 @@ import AddProduct from "./addProduct";
 import MyProducts from "./myProducts";
 
 const SellerDash = (e) => {
-    const [displayPage, setPage] = useState("profile");
+  const [displayPage, setPage] = useState("profile");
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
   
+
   const navigate = useNavigate();
   return (
     <>
@@ -29,19 +34,20 @@ const SellerDash = (e) => {
         <div className={styles["sub-container"]}>
           <div className={styles["panel"]}>
             <div className={styles["sub-panel"]}>
-              <span onClick={e=>setPage("profile")}>Profile</span>
-              <span onClick={e=>setPage("addproduct")}>Add Product</span>
-              <span onClick={e=>setPage("myproduct")}>My Products</span>
+              <span onClick={(e) => setPage("profile")}>Profile</span>
+              <span onClick={(e) => setPage("addproduct")}>Add Product</span>
+              <span onClick={(e) => setPage("myproduct")}>My Products</span>
               <span>Logout</span>
             </div>
           </div>
           <div className={styles["display-panel"]}>
-            {/* <PersonalInfo /> */}
-            {/* <AddProduct /> */}
-            {/* <MyProducts /> */}
-
-            {displayPage=='profile'? <PersonalInfo /> : displayPage=="addproduct" ? <AddProduct /> : <MyProducts />}
-
+            {displayPage == "profile" ? (
+              <PersonalInfo />
+            ) : displayPage == "addproduct" ? (
+              <AddProduct />
+            ) : (
+              <MyProducts />
+            )}
           </div>
         </div>
       </div>

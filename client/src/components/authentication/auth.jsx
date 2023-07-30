@@ -21,14 +21,20 @@ const Auth = (props) => {
     setNewUser(rec);
   };
 
+  //to close the login window and navigate to home
+  const closeAuth = (rec) => {
+    props.onClick(rec);
+    document.body.style.overflowY = "visible";
+  };
+
   return (
     <div onClick={closeModal} className={styles["container"]}>
       <div className={styles["auth"]}>
         <div className={styles["auth-left"]}></div>
-        {newUser ? (
+        {!newUser ? (
           <Signup switchTo={authSwitch} />
         ) : (
-          <Login switchTo={authSwitch} />
+          <Login Logged={closeAuth} switchTo={authSwitch} />
         )}
       </div>
     </div>
