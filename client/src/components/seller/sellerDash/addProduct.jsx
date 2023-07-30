@@ -2,7 +2,32 @@ import { useState } from "react";
 import styles from "./sellerDash.module.css";
 
 const AddProduct = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({
+    category: "",
+    name: "",
+    price: "",
+    description: "",
+  });
+
+  const postData = async () => {
+    const res = await fetch("/api/addproduct", {
+      method: "post",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    const data = await res.json();
+    console.log(data.message);
+  };
+  const handleAddProduct = () => {
+    postData();
+  };
+  const handleChange = (e) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+    console.log(e.target.value);
+  };
   return (
     <div className={styles["add-product"]}>
       <span>
@@ -10,21 +35,45 @@ const AddProduct = () => {
       </span>
       <span>
         <p>Category: </p>
-        <input type="text"></input>
+        <input
+          type="text"
+          placeholder="Enter Category"
+          name="category"
+          value={product.category}
+          onChange={handleChange}
+        />
       </span>
       <span>
         <p>Name: </p>
-        <input type="text"></input>
+        <input
+          type="text"
+          placeholder="Enter product name"
+          name="name"
+          value={product.name}
+          onChange={handleChange}
+        ></input>
       </span>
       <span>
         <p>Price: </p>
-        <input type="text"></input>
+        <input
+          type="text"
+          placeholder="Enter price"
+          name="price"
+          value={product.price}
+          onChange={handleChange}
+        ></input>
       </span>
       <span>
         <p style={{ alignSelf: "flex-start" }}>Description: </p>
-        <textarea type="text" />
+        <textarea
+          type="text"
+          placeholder="Description"
+          name="description"
+          value={product.description}
+          onChange={handleChange}
+        />
       </span>
-      <button>Add</button>
+      <button onClick={handleAddProduct}>Add</button>
     </div>
   );
 };

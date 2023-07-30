@@ -13,7 +13,7 @@ router.get("/api/seller", auth, async (req, res) => {
   }
 });
 
-router.post("/addproduct", async (req, res) => {
+router.post("/api/addproduct", async (req, res) => {
   const product = new Product(req.body);
   try {
     product.save();
