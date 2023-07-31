@@ -4,7 +4,8 @@ require("dotenv").config();
 
 const UserAuth = async (req, res, next) => {
   const token = req.cookies.userJWT;
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
 
   const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
 
@@ -16,8 +17,11 @@ const UserAuth = async (req, res, next) => {
 
   req.user = user;
   req.token = token;
-
+  
   next();
+  } catch (e) {
+    res.status(400).send({message: false})
+  }
 };
 
 module.exports = UserAuth;

@@ -4,6 +4,7 @@ import styles from "./sellerAuth.module.css";
 
 const LoginSeller = (props) => {
   const navigate = useNavigate();
+  const [invalid, setInvalid] = useState(false);
   const [cred, setCred] = useState({
     email: "",
     password: "",
@@ -19,9 +20,10 @@ const LoginSeller = (props) => {
       body: JSON.stringify(cred),
     });
     const data = await res.json();
-    if (data.message == "success") {
-      console.log(data.message);
-    }
+    if (data.message) {
+      navigate("/sellerdash");
+      setInvalid(false);
+    } else setInvalid(true);
   };
 
   const handleChange = (e) => {
@@ -39,9 +41,20 @@ const LoginSeller = (props) => {
       <div className={styles["title2"]}>
         <h2>Login</h2>
         <p style={{ fontSize: "85%" }}>using seller account</p>
+        <p
+          style={{
+            color: "red",
+            fontSize: "90%",
+            marginTop: "5px",
+            height: "12px",
+          }}
+        >
+          {invalid ? <>Invalid Credentials!</> : null}
+        </p>
       </div>
       <span className={styles["form"]}>
         <input
+          style={{ marginTop: "0" }}
           type="text"
           placeholder="Enter email"
           name="email"

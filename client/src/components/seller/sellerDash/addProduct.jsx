@@ -19,14 +19,16 @@ const AddProduct = () => {
       body: JSON.stringify(product),
     });
     const data = await res.json();
-    console.log(data.message);
+    if (data.message) {
+      setProduct({ ...product, category: "", name: "", price: "", description: "" })
+      alert("product added successfully")
+    }
   };
   const handleAddProduct = () => {
     postData();
   };
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
-    console.log(e.target.value);
   };
   return (
     <div className={styles["add-product"]}>

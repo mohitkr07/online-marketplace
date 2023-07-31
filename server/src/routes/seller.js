@@ -34,7 +34,7 @@ router.post("/seller/login", async (req, res) => {
       expires: new Date(Date.now() + 86400 * 1000),
     });
 
-    res.send({ seller, message: "success" });
+    res.send({ seller, message: true });
   } catch (e) {
     res.status(500).send({ message: false });
   }
@@ -55,9 +55,16 @@ router.get("/api/seller/logout", auth, async (req, res) => {
       return token.token !== req.token;
     });
     await req.seller.save();
-    console.log("hi", req.seller.tokens);
-    console.log("logged out successfully");
-    res.status(202).send({ message: "logged out" });
+    res.status(202).send({ message: true });
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+router.get("/api/seller/logoutall", auth, async (req, res) => {
+  try {
+    req.seller.tokens = [];
+    await req.seller.save();
+    res.status(202).send({ message: true });
   } catch (e) {
     res.status(500).send(e);
   }
@@ -70,9 +77,9 @@ router.post("/api/addproduct", auth, async (req, res) => {
   try {
     await product.save();
 
-    res.status(201).send(product);
+    res.status(201).send({message: true});
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send(false);
   }
 });
 

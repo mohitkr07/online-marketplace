@@ -11,7 +11,7 @@ require("dotenv").config();
 router.get("/api/user", Auth, async (req, res) => {
   try {
     const user = req.user;
-    res.send({ user });
+    res.send({message: true, user });
   } catch (e) {
     res.status(400).send(e);
   }
@@ -51,9 +51,9 @@ router.get("/api/logout", Auth, async (req, res) => {
       return token.token !== req.token;
     });
     await req.user.save();
-    res.send();
+    res.status(200).send({message: true});
   } catch (e) {
-    res.status(500).send();
+    res.status(500).send({message: false});
   }
 });
 

@@ -9,12 +9,13 @@ const SellerDash = (e) => {
   const navigate = useNavigate();
   const [displayPage, setPage] = useState("profile");
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = (e) => {
+    if (e.target.name == "logout" || e.target.innerHTML == "Logout") logout("logout");
+    else if (e.target.name == "logoutall") logout("logoutall");
   };
 
-  const logout = async () => {
-    const res = await fetch("/api/seller/logout", {
+  const logout = async (param) => {
+    const res = await fetch(`/api/seller/${param}`, {
       method: "get",
       credentials: "include",
       headers: {
@@ -23,7 +24,7 @@ const SellerDash = (e) => {
     });
     const data = await res.json();
     console.log(data.message);
-    if (data.message == "logged out") navigate("/cityPage");
+    if (data.message) navigate("/cityPage");
   };
 
   useEffect(() => {
@@ -59,8 +60,11 @@ const SellerDash = (e) => {
             <img src="images/logo.png"></img>
           </div>
           <div className={styles["auth"]}>
-            <button className={styles["login-btn"]} onClick={handleLogout}>
+            <button className={styles["login-btn"]} name="logout" onClick={handleLogout}>
               Logout
+            </button>
+            <button className={styles["login-btn"]} name="logoutall" onClick={handleLogout}>
+              Logout Everywhere
             </button>
           </div>
         </div>
@@ -72,7 +76,7 @@ const SellerDash = (e) => {
               <span onClick={(e) => setPage("profile")}>Profile</span>
               <span onClick={(e) => setPage("addproduct")}>Add Product</span>
               <span onClick={(e) => setPage("myproduct")}>My Products</span>
-              <span>Logout</span>
+              <span onClick={handleLogout}>Logout</span>
             </div>
           </div>
           <div className={styles["display-panel"]}>

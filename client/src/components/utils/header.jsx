@@ -29,8 +29,10 @@ const Header = (props) => {
       },
     });
     const data = await res.json();
-    setProfile(data.user);
-    setLog(true);
+    if (data.message) {
+      setProfile(data.user);
+      setLog(true);
+    }
   };
 
   const logOut = async () => {
@@ -41,6 +43,12 @@ const Header = (props) => {
         "Content-Type": "application/json",
       },
     });
+    const data = await res.json()
+    if (data.message)
+    {
+      setLog(false);
+      setProfile(null)
+    }
   };
 
   const handleLogout = () => {
