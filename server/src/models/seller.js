@@ -47,12 +47,6 @@ const sellerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  products: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: Product,
-    },
-  ],
   tokens: [
     {
       token: {
@@ -60,6 +54,15 @@ const sellerSchema = new mongoose.Schema({
       },
     },
   ],
+});
+
+sellerSchema.set("toObject", { virtuals: true });
+sellerSchema.set("toJSON", { virtuals: true });
+
+sellerSchema.virtual("products", {
+  ref: "Product",
+  localField: "_id",
+  foreignField: "owner",
 });
 
 sellerSchema.methods.generateAuthToken = async function () {

@@ -54,7 +54,7 @@ const Container = () => {
                 </>
               }
             />
-            <Route exact path="/sellerprofile" element={<SellerDash />} />
+            <Route exact path="/sellerdash" element={<SellerDash />} />
           </Routes>
           <MaksFooter />
         </BrowserRouter>

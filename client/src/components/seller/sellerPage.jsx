@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./seller.module.css";
 import RegisterSeller from "./sellerAuth/registerSeller";
@@ -12,11 +12,35 @@ const SellerPage = () => {
     setLogin(rec);
   };
 
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    const res = await fetch("/api/seller/verify", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    console.log(data.message);
+    if (data.message) {
+      navigate("/sellerdash");
+    }
+  };
+
   return (
     <>
       <nav className={styles["nav"]}>
         <div className={styles["content"]}>
-          <div onClick={(e) => navigate("/")} style={{cursor: "pointer", backgroundColor: "#fff"}} className={styles["logo"]}>
+          <div
+            onClick={(e) => navigate("/")}
+            style={{ cursor: "pointer", backgroundColor: "#fff" }}
+            className={styles["logo"]}
+          >
             <img src="images/logo.png"></img>
           </div>
           <div className={styles["auth"]}>

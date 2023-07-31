@@ -47,7 +47,6 @@ router.post("/api/login", async (req, res) => {
 
 router.get("/api/logout", Auth, async (req, res) => {
   try {
-    console.log("called");
     req.user.tokens = req.user.tokens.filter((token) => {
       return token.token !== req.token;
     });

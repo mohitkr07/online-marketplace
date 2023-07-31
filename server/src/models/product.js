@@ -22,7 +22,11 @@ const productSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  // Add more fields as needed
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Seller",
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -1,6 +1,25 @@
+import { useEffect, useState } from "react";
 import styles from "./sellerDash.module.css";
 
 const MyProducts = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchProducts();
+  }, [1]);
+
+  const fetchProducts = async () => {
+    const res = await fetch("/api/products", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    setProducts(data);
+  };
+
+  let srNo = 1;
   return (
     <div className={styles["my-products"]}>
       <h2>My Products</h2>
@@ -11,15 +30,19 @@ const MyProducts = () => {
             <th>Name</th>
             <th>Price</th>
             <th>Category</th>
-            <th>Description</th>
+            <th>Product Link</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>cover</td>
-            <td>40</td>
-            <td>Electronics</td>
-            <td>link</td>
-          </tr>
+          {products.map((product, key) => (
+            <tr key={key}>
+              <td>{srNo++}</td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.category}</td>
+              <td>
+                <a href="#">view</a>
+              </td>
+            </tr>
+          ))}
         </thead>
       </table>
     </div>

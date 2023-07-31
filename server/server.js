@@ -22,7 +22,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(userRoute);
 app.use(sellerRoute);
 
-
 app.listen(port, () => {
   console.log("Server is running on port", port);
 });
+
+// const Product = require("./src/models/product");
+// const Seller = require("./src/models/seller");
+
+// const main = async () => {
+  // const product = await Product.findById("64c703131f1e143c2480ae87");
+  // await product.populate("owner");
+  // console.log(product);
+
+//   const seller = await Seller.findById("64c702671f1e143c2480ae7a").populate(
+//     "products"
+//   );
+//   console.log(seller);
+// };
+
+// main();

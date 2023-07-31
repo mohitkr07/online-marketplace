@@ -35,7 +35,8 @@ const PersonalInfo = () => {
       },
     });
     const data = await res.json();
-    setSellerInfo(data.seller);
+    if(data.message)
+      setSellerInfo(data.seller);
   };
 
   const handleChange = (e) => {

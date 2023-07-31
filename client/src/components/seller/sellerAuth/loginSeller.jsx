@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./sellerAuth.module.css";
 
 const LoginSeller = (props) => {
+  const navigate = useNavigate();
   const [cred, setCred] = useState({
     email: "",
     password: "",
@@ -24,7 +26,6 @@ const LoginSeller = (props) => {
 
   const handleChange = (e) => {
     setCred({ ...cred, [e.target.name]: e.target.value });
-    
   };
 
   const handleLogin = () => {

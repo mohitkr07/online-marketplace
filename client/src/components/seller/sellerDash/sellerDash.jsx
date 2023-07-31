@@ -6,14 +6,47 @@ import AddProduct from "./addProduct";
 import MyProducts from "./myProducts";
 
 const SellerDash = (e) => {
+  const navigate = useNavigate();
   const [displayPage, setPage] = useState("profile");
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-  
+  const handleLogout = () => {
+    logout();
+  };
 
-  const navigate = useNavigate();
+  const logout = async () => {
+    const res = await fetch("/api/seller/logout", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "appliation/json",
+      },
+    });
+    const data = await res.json();
+    console.log(data.message);
+    if (data.message == "logged out") navigate("/cityPage");
+  };
+
+  useEffect(() => {
+    checkAuth();
+  }, [1]);
+
+  const checkAuth = async () => {
+    const res = await fetch("/api/seller/verify", {
+      method: "get",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    if (data.message) {
+      console.log("checked");
+    } else {
+      navigate("/citypage");
+    }
+  };
+
   return (
     <>
       <nav className={styles["nav"]}>
@@ -26,7 +59,9 @@ const SellerDash = (e) => {
             <img src="images/logo.png"></img>
           </div>
           <div className={styles["auth"]}>
-            <button className={styles["login-btn"]}>Logout</button>
+            <button className={styles["login-btn"]} onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         </div>
       </nav>
