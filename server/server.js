@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
+const searchRouter = require("./src/routes/search")
 const userRoute = require("./src/routes/user");
 const sellerRoute = require("./src/routes/seller");
 const port = process.env.PORT || 4500;
@@ -19,6 +20,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(searchRouter);
 app.use(userRoute);
 app.use(sellerRoute);
 

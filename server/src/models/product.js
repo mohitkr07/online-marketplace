@@ -18,16 +18,19 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
-    trim: true,
+    ref: 'Category'
   },
+  tags: [{ type: String }],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "Seller",
+    ref: 'Seller',
   },
 });
+
+
 
 const Product = mongoose.model("Product", productSchema);
 

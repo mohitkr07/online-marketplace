@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./sellerDash.module.css";
 
 const AddProduct = () => {
@@ -8,6 +8,28 @@ const AddProduct = () => {
     price: "",
     description: "",
   });
+
+  const [categories, setCategories] = useState([])
+  const [filteredCategories, setFilteredCategories] = useState([])
+
+  useEffect(() => {
+    fetchCategories()
+  }, [1])
+
+  const fetchCategories = async () => {
+    const res = await fetch("/api/getcategories", {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await res.json();
+    if (data.message) {
+      setCategories(data.categories);
+      // console.log(data.categories)
+    }
+  }
 
   const postData = async () => {
     const res = await fetch("/api/addproduct", {
@@ -27,9 +49,29 @@ const AddProduct = () => {
   const handleAddProduct = () => {
     postData();
   };
+
   const handleChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    const { name, value } = e.target
+    setProduct({ ...product, [name]: value });
+    if (name === "category") {
+      const filtered = categories.filter((category) => {
+        return category.name.toLowerCase().includes(value.toLowerCase())
+      })
+      //Learning:
+      // if we use curly braces in an arrow function then it is mandatory to 'return' as curly braces implies multiple lines of code
+      // we can use round brackets where we have to return only one element and 'return' is not required
+      setFilteredCategories(filtered)
+    }
   };
+
+
+  const [viewSugg, setSugg] = useState(false)
+  const myElementRef = useRef(null)
+
+  const handleSugg = (e) => {
+    setSugg(!viewSugg);
+  }
+
   return (
     <div className={styles["add-product"]}>
       <span>
@@ -37,13 +79,23 @@ const AddProduct = () => {
       </span>
       <span>
         <p>Category: </p>
-        <input
-          type="text"
-          placeholder="Enter Category"
-          name="category"
-          value={product.category}
-          onChange={handleChange}
-        />
+        <div className={styles["search-box"]}>
+          <input
+            type="text"
+            placeholder="Enter Category"
+            name="category"
+            value={product.category}
+            onChange={handleChange}
+            onFocus={() => setSugg(true)}
+          />
+          <div onClick={handleSugg} className={styles["result"]}>
+            {viewSugg && product.category.length > 0 && <ul className={styles["suggestions"]}>
+              {filteredCategories.map((i, key) => {
+                return <li ref={myElementRef} onFocus={handleSugg} onClick={() => setProduct({ ...product, category: i.name })} key={key}>{i.name}</li>
+              })}
+            </ul>}
+          </div>
+        </div>
       </span>
       <span>
         <p>Name: </p>
