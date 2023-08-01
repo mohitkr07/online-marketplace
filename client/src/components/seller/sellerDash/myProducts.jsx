@@ -16,6 +16,7 @@ const MyProducts = () => {
       },
     });
     const data = await res.json();
+    console.log(data)
     setProducts(data);
   };
 
@@ -37,7 +38,7 @@ const MyProducts = () => {
               <td>{srNo++}</td>
               <td>{product.name}</td>
               <td>{product.price}</td>
-              <td>{product.category}</td>
+              <td>{product.category.name}</td>
               <td>
                 <a href="#">view</a>
               </td>

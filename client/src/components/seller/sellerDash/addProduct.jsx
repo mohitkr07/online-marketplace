@@ -3,10 +3,13 @@ import styles from "./sellerDash.module.css";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
-    category: "",
+    categoryName: "",
     name: "",
     price: "",
     description: "",
+    category: "",
+    subcategoryName: "",
+    subcategory_id: "",
   });
 
   const [categories, setCategories] = useState([])
@@ -42,8 +45,9 @@ const AddProduct = () => {
     });
     const data = await res.json();
     if (data.message) {
-      setProduct({ ...product, category: "", name: "", price: "", description: "" })
+      setProduct({ ...product, categoryName: "", name: "", price: "", description: "" })
       alert("product added successfully")
+      // console.log(data.product)
     }
   };
   const handleAddProduct = () => {
@@ -53,13 +57,10 @@ const AddProduct = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value });
-    if (name === "category") {
+    if (name === "categoryName") {
       const filtered = categories.filter((category) => {
         return category.name.toLowerCase().includes(value.toLowerCase())
       })
-      //Learning:
-      // if we use curly braces in an arrow function then it is mandatory to 'return' as curly braces implies multiple lines of code
-      // we can use round brackets where we have to return only one element and 'return' is not required
       setFilteredCategories(filtered)
     }
   };
@@ -68,66 +69,169 @@ const AddProduct = () => {
   const [viewSugg, setSugg] = useState(false)
   const myElementRef = useRef(null)
 
-  const handleSugg = (e) => {
-    setSugg(!viewSugg);
+  // const handleSugg = (e) => {
+  //   setSugg(!viewSugg);
+  // }
+  const handleClose = (e) => {
+    if (e.target == e.currentTarget) {
+      setSugg(false)
+    }
   }
 
+
+  // handle Subcategory
+
+  const [subCategories, setSubCategories] = useState([])
+  // const [filteredSub, setFilteredSub] = useState([])
+
+  const fetchSub = async (cat) => {
+    const res = await fetch("/api/getsubcat", {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({ cat })
+    })
+    const data = await res.json();
+    if (data.message) {
+      setSubCategories(data.subCat)
+    }
+  }
+
+  const handleFocus = async (e) => {
+    let flag = 1;
+    for (const category of categories) {
+      if (category.name == product.categoryName) {
+        await fetchSub(product.category)
+        flag = 0;
+        setSubSugg(true)
+      }
+    }
+    if (flag)
+      console.log('Select Category First')
+
+
+  }
+
+
+  const handleBlur = () => {
+    // Update the product state after 0ms (immediately)
+    setProduct({ ...product, subcategoryName: '' });
+
+    // Update the sugg state after 10ms
+    setTimeout(() => {
+      setSugg(false);
+
+      // Update the subSugg state after another 10ms
+      setTimeout(() => {
+        setSubSugg(false);
+      }, 10);
+    }, 100);
+  };
+
+  const [viewSubSugg, setSubSugg] = useState(false)
+
   return (
-    <div className={styles["add-product"]}>
-      <span>
-        <h2>Add Product</h2>
-      </span>
-      <span>
-        <p>Category: </p>
-        <div className={styles["search-box"]}>
+    <div style={{ width: "100%", height: "100%" }} onClick={handleClose}>
+      <div className={styles["add-product"]} onClick={handleClose}>
+        <span>
+          <h2>Add Product</h2>
+        </span>
+        <span>
+          <p>Category: </p>
+          <div className={styles["search-box"]}>
+            <input
+              type="text"
+              placeholder="Enter Category"
+              name="categoryName"
+              value={product.categoryName}
+              onChange={handleChange}
+              onFocus={() => { setSugg(true); setSubSugg(false) }}
+              // onBlur={() => { setProduct({ ...product, subcategoryName: "" }); setSugg(false); setSubSugg(false) }}
+              onBlur={handleBlur}
+            />
+            <div className={styles["result"]}>
+              {viewSugg && <ul className={styles["suggestions"]}>
+                {filteredCategories.map((i, key) => {
+                  return <li
+                    ref={myElementRef}
+                    // onFocus={()=>{setSubSugg(false)}}
+                    onClick={() => { setProduct({ ...product, categoryName: i.name, category: i._id }); setSubSugg(false) }}
+                    key={key}
+                  >
+                    {i.name}
+                  </li>
+                })}
+              </ul>}
+            </div>
+          </div>
+        </span>
+        <span>
+          <p>Sub Category: </p>
+          <div className={styles["search-box"]}>
+            <input
+              type="text"
+              placeholder="Enter sub category"
+              name="subCategory"
+              value={product.subcategoryName}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={() => setTimeout(() => {
+                setSubSugg(false)
+              }, 100)}
+
+            />
+            <div className={styles["result"]}>
+              {viewSubSugg && <ul className={styles["suggestions"]}>
+                {subCategories.map((i, key) => {
+                  return <li
+                    onClick={() => {
+                      setProduct({ ...product, subcategoryName: i.name, subcategory_id: i._id }); setTimeout(() => {
+                        setSubSugg(false)
+                      }, 10);
+                    }}
+                    key={key}
+                  >
+                    {i.name}
+                  </li>
+                })}
+              </ul>}
+            </div>
+          </div>
+        </span>
+        <span>
+          <p>Title: </p>
           <input
             type="text"
-            placeholder="Enter Category"
-            name="category"
-            value={product.category}
+            placeholder="Enter product name"
+            name="name"
+            value={product.name}
             onChange={handleChange}
-            onFocus={() => setSugg(true)}
+          ></input>
+        </span>
+        <span>
+          <p>Price: </p>
+          <input
+            type="text"
+            placeholder="Enter price"
+            name="price"
+            value={product.price}
+            onChange={handleChange}
+          ></input>
+        </span>
+        <span>
+          <p style={{ alignSelf: "flex-start" }}>Description: </p>
+          <textarea
+            type="text"
+            placeholder="Description"
+            name="description"
+            value={product.description}
+            onChange={handleChange}
           />
-          <div onClick={handleSugg} className={styles["result"]}>
-            {viewSugg && product.category.length > 0 && <ul className={styles["suggestions"]}>
-              {filteredCategories.map((i, key) => {
-                return <li ref={myElementRef} onFocus={handleSugg} onClick={() => setProduct({ ...product, category: i.name })} key={key}>{i.name}</li>
-              })}
-            </ul>}
-          </div>
-        </div>
-      </span>
-      <span>
-        <p>Name: </p>
-        <input
-          type="text"
-          placeholder="Enter product name"
-          name="name"
-          value={product.name}
-          onChange={handleChange}
-        ></input>
-      </span>
-      <span>
-        <p>Price: </p>
-        <input
-          type="text"
-          placeholder="Enter price"
-          name="price"
-          value={product.price}
-          onChange={handleChange}
-        ></input>
-      </span>
-      <span>
-        <p style={{ alignSelf: "flex-start" }}>Description: </p>
-        <textarea
-          type="text"
-          placeholder="Description"
-          name="description"
-          value={product.description}
-          onChange={handleChange}
-        />
-      </span>
-      <button onClick={handleAddProduct}>Add</button>
+        </span>
+        <button onClick={handleAddProduct}>Add</button>
+      </div>
     </div>
   );
 };

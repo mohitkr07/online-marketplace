@@ -28,18 +28,15 @@ app.listen(port, () => {
   console.log("Server is running on port", port);
 });
 
-// const Product = require("./src/models/product");
-// const Seller = require("./src/models/seller");
+const Product = require("./src/models/product");
+const Seller = require("./src/models/seller");
+const Category = require("./src/models/category")
+const SubCategory = require("./src/models/subCat")
 
-// const main = async () => {
-  // const product = await Product.findById("64c703131f1e143c2480ae87");
-  // await product.populate("owner");
-  // console.log(product);
-
-//   const seller = await Seller.findById("64c702671f1e143c2480ae7a").populate(
-//     "products"
-//   );
-//   console.log(seller);
-// };
+const main = async () => {
+  const category = await Category.findById("64c82d4f2d3c8a820ae761f7")
+  await category.populate('subCategories')
+  console.log(category)
+};
 
 // main();

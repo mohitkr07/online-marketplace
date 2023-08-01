@@ -73,21 +73,43 @@ router.get("/api/seller/logoutall", auth, async (req, res) => {
 // product API
 
 router.post("/api/addproduct", auth, async (req, res) => {
+
   const product = new Product({ ...req.body, owner: req.seller._id });
   try {
+    console.log(product)
     await product.save();
 
-    res.status(201).send({message: true});
+    res.status(201).send({ message: true, product });
   } catch (e) {
     res.status(500).send(false);
   }
 });
 
+// router.get("/api/products", auth, async (req, res) => {
+//   const seller = await Seller.findById(req.seller._id).populate('products')
+//   try {
+//     seller.products.forEach(async (product) => {
+//       await product.populate('category')
+//     });
+//     console.log(seller.products)
+//     res.status(201).send(seller.products);
+//   } catch (e) {
+//     res.status(500).send(e);
+//   }
+// });
+
 router.get("/api/products", auth, async (req, res) => {
-  const seller = await Seller.findById(req.seller._id);
-  // console.log(seller);
   try {
-    await seller.populate("products");
+    const seller = await Seller.findById(req.seller._id).populate("products");
+
+    // Use Promise.all with map to wait for all populate operations to complete
+    await Promise.all(
+      seller.products.map(async (product) => {
+        await product.populate("category");
+      })
+    );
+
+    // console.log(seller.products);
     res.status(201).send(seller.products);
   } catch (e) {
     res.status(500).send(e);

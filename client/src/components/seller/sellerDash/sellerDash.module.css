@@ -225,6 +225,7 @@
     position: absolute;
     background-color: #fff;
     width: 100%;
+    z-index: 1;
 }
 
 .suggestions {

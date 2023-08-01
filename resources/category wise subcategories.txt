@@ -1,0 +1,837 @@
+//category wise subcategories
+
+[
+  {
+    "category": "Arts & Crafts",
+    "subcategories": [
+      "Paints",
+      "Brushes",
+      "Sketchbooks",
+      "Drawing Pencils",
+      "Craft Kits",
+      "Scrapbooking Supplies",
+      "Calligraphy Pens",
+      "Pottery",
+      "Clay",
+      "Beads",
+      "Jewelry Making Supplies",
+      "DIY Craft Materials"
+    ]
+  },
+  {
+    "category": "Automotive & Tools",
+    "subcategories": [
+      "Car Parts",
+      "Automotive Tools",
+      "Car Care Products",
+      "Tires",
+      "Auto Accessories",
+      "Motorcycle Parts",
+      "Power Tools",
+      "Hand Tools"
+    ]
+  },
+  {
+    "category": "Automotive Parts & Accessories",
+    "subcategories": [
+      "Car Batteries",
+      "Alternators",
+      "Starters",
+      "Radiators",
+      "Cooling Systems",
+      "Belts",
+      "Hoses",
+      "Air Filters",
+      "Ignition System Components",
+      "Car Lighting",
+      "Car Audio and Electronics"
+    ]
+  },
+  {
+    "category": "Baby & Nursery",
+    "subcategories": [
+      "Baby Clothing",
+      "Diapers",
+      "Wipes",
+      "Baby Gear",
+      "Nursery Furniture",
+      "Baby Toys",
+      "Baby Feeding Supplies",
+      "Baby Safety Products",
+      "Baby Bath",
+      "Skincare"
+    ]
+  },
+  {
+    "category": "Beverages & Drinks",
+    "subcategories": [
+      "Soft Drinks",
+      "Sodas",
+      "Bottled Water",
+      "Coffee",
+      "Tea",
+      "Energy Drinks",
+      "Fruit Juices",
+      "Alcoholic Beverages",
+      "Sports Drinks",
+      "Flavored Waters"
+    ]
+  },
+  {
+    "category": "Books & Media",
+    "subcategories": [
+      "Fiction Books",
+      "Non-Fiction Books",
+      "Educational Books",
+      "E-books",
+      "Audiobooks",
+      "DVDs",
+      "Blu-rays",
+      "Music CDs",
+      "Records",
+      "Video Games",
+      "Magazines",
+      "Journals"
+    ]
+  },
+  {
+    "category": "Camping & Hiking Gear",
+    "subcategories": [
+      "Tents",
+      "Sleeping Bags",
+      "Camping Stoves",
+      "Cookware",
+      "Camping Chairs",
+      "Tables",
+      "Camping Lanterns",
+      "Lights",
+      "Backpacks",
+      "Daypacks",
+      "Hiking Boots",
+      "Footwear",
+      "Camping Tools",
+      "Camping Food",
+      "Snacks"
+    ]
+  },
+  {
+    "category": "Clothing & Apparel",
+    "subcategories": [
+      "Pants",
+      "Trousers",
+      "Shirts",
+      "Blouses",
+      "T-shirts",
+      "Tops",
+      "Dresses",
+      "Skirts",
+      "Jackets",
+      "Coats",
+      "Sweaters",
+      "Cardigans",
+      "Underwear",
+      "Lingerie",
+      "Socks",
+      "Hosiery"
+    ]
+  },
+  {
+    "category": "Cookware & Kitchenware",
+    "subcategories": [
+      "Pots",
+      "Pans",
+      "Cooking Utensils",
+      "Spatulas",
+      "Ladles",
+      "Cutlery",
+      "Knives",
+      "Cutting Boards",
+      "Baking Supplies",
+      "Baking Pans",
+      "Measuring Cups",
+      "Kitchen Appliances",
+      "Blenders",
+      "Mixers",
+      "Food Storage Containers",
+      "Dinnerware",
+      "Flatware",
+      "Kitchen Gadgets",
+      "Peelers",
+      "Can Openers"
+    ]
+  },
+  {
+    "category": "Diapers & Baby Care",
+    "subcategories": [
+      "Disposable Diapers",
+      "Cloth Diapers",
+      "Diaper Rash Cream",
+      "Baby Wipes",
+      "Diaper Bags",
+      "Baby Lotion",
+      "Baby Oil",
+      "Baby Shampoo",
+      "Baby Wash",
+      "Diaper Pails",
+      "Refills"
+    ]
+  },
+  {
+    "category": "Electronics",
+    "subcategories": [
+      "Smartphones",
+      "Laptops",
+      "Computers",
+      "Televisions",
+      "Cameras",
+      "DSLRs",
+      "Mirrorless Cameras",
+      "Audio Devices",
+      "Headphones",
+      "Speakers",
+      "Smart Watches",
+      "Gaming Consoles",
+      "Tablets",
+      "E-readers"
+    ]
+  },
+  {
+    "category": "Electronics Accessories",
+    "subcategories": [
+      "Phone Cases",
+      "Covers",
+      "Laptop Bags",
+      "Sleeves",
+      "Screen Protectors",
+      "Charging Cables",
+      "Adapters",
+      "Headphone Accessories",
+      "Ear Tips",
+      "Extension Cables",
+      "Camera Accessories",
+      "Memory Cards",
+      "Lens Filters",
+      "Smartwatch Bands",
+      "Straps",
+      "Gaming Controllers",
+      "Accessories"
+    ]
+  },
+  {
+    "category": "Fashion Accessories",
+    "subcategories": [
+      "Handbags",
+      "Purses",
+      "Wallets",
+      "Cardholders",
+      "Hats",
+      "Caps",
+      "Scarves",
+      "Shawls",
+      "Belts",
+      "Belt Buckles",
+      "Gloves",
+      "Mittens",
+      "Keychains",
+      "Lanyards",
+      "Hair Accessories"
+    ]
+  },
+  {
+    "category": "Fitness & Exercise Equipment",
+    "subcategories": [
+      "Treadmills",
+      "Cardio Machines",
+      "Exercise Bikes",
+      "Free Weights",
+      "Dumbbells",
+      "Resistance Bands",
+      "Yoga Mats",
+      "Blocks",
+      "Fitness Trackers",
+      "Wearables",
+      "Exercise Balls",
+      "Jump Ropes",
+      "Skipping Cords"
+    ]
+  },
+  {
+    "category": "Food & Beverages",
+    "subcategories": [
+      "Cereal",
+      "Breakfast Foods",
+      "Pasta",
+      "Noodles",
+      "Canned Goods",
+      "Condiments",
+      "Sauces",
+      "Snack Foods",
+      "Chips",
+      "Popcorn",
+      "Pretzels",
+      "Cookies",
+      "Biscuits",
+      "Nuts",
+      "Dried Fruits",
+      "Rice Cakes",
+      "Crackers",
+      "Granola Bars",
+      "Energy Bars",
+      "Gummies",
+      "Chewy Candies"
+    ]
+  },
+  {
+    "category": "Furniture & Decor",
+    "subcategories": [
+      "Sofas",
+      "Couches",
+      "Dining Tables",
+      "Chairs",
+      "Bed Frames",
+      "Mattresses",
+      "Coffee Tables",
+      "Side Tables",
+      "Bookshelves",
+      "Storage Cabinets",
+      "Rugs",
+      "Carpets",
+      "Wall Art",
+      "Decorative Mirrors",
+      "Curtains",
+      "Window Treatments"
+    ]
+  },
+  {
+    "category": "Gardening Tools & Equipment",
+    "subcategories": [
+      "Gardening Gloves",
+      "Hats",
+      "Pruning Shears",
+      "Loppers",
+      "Shovels",
+      "Spades",
+      "Watering Cans",
+      "Hoses",
+      "Plant Pots",
+      "Containers",
+      "Garden Hoes",
+      "Rakes",
+      "Gardening Kneelers",
+      "Pads",
+      "Garden Tool Sets"
+    ]
+  },
+  {
+    "category": "Health & Beauty",
+    "subcategories": [
+      "Vitamins",
+      "Supplements",
+      "Skincare Products",
+      "Cleansers",
+      "Moisturizers",
+      "Hair Care Products",
+      "Shampoo",
+      "Conditioner",
+      "Oral Care Products",
+      "Toothpaste",
+      "Toothbrushes",
+      "Personal Hygiene Products",
+      "Soap",
+      "Deodorant",
+      "First Aid Supplies",
+      "Feminine Care Products",
+      "Sunscreen",
+      "Sunblock"
+    ]
+  },
+  {
+    "category": "Hobbies & Collectibles",
+    "subcategories": [
+      "Model Kits",
+      "Airplanes",
+      "Cars",
+      "Collectible Figurines",
+      "Stamp Collecting Supplies",
+      "Coin Collecting Supplies",
+      "Antiques",
+      "Vintage Items",
+      "Trading Cards",
+      "Baseball Cards",
+      "Pokémon Cards",
+      "Hobbyist Tools",
+      "Model Paints",
+      "Magnifying Glasses",
+      "Craft Books"
+    ]
+  },
+  {
+    "category": "Home & Kitchen",
+    "subcategories": [
+      "Cleaning Supplies",
+      "Detergents",
+      "Mops",
+      "Home Organization Products",
+      "Home Security Systems",
+      "Home Automation Devices",
+      "Home Fragrances",
+      "Candles",
+      "Air Fresheners",
+      "Home Maintenance Tools",
+      "Home Improvement Materials",
+      "Home Safety Products"
+    ]
+  },
+  {
+    "category": "Home Appliances",
+    "subcategories": [
+      "Refrigerators",
+      "Freezers",
+      "Washing Machines",
+      "Dryers",
+      "Dishwashers",
+      "Ovens",
+      "Stoves",
+      "Vacuum Cleaners",
+      "Microwaves",
+      "Air Conditioners",
+      "Coffee Makers",
+      "Kettles"
+    ]
+  },
+  {
+    "category": "Home Decor & Furnishings",
+    "subcategories": [
+      "Throw Pillows",
+      "Cushions",
+      "Wall Clocks",
+      "Decorative Vases",
+      "Bowls",
+      "Picture Frames",
+      "Wall Shelves",
+      "Racks",
+      "Decorative Lamps",
+      "Lighting",
+      "Artificial Plants",
+      "Flowers",
+      "Area Rugs",
+      "Mats"
+    ]
+  },
+  {
+    "category": "Jewelry & Accessories",
+    "subcategories": [
+      "Earrings",
+      "Necklaces",
+      "Pendants",
+      "Bracelets",
+      "Bangles",
+      "Rings",
+      "Brooches",
+      "Pins",
+      "Jewelry Boxes",
+      "Organizers",
+      "Watches",
+      "Cufflinks",
+      "Tie Clips"
+    ]
+  },
+  {
+    "category": "Movies & Entertainment",
+    "subcategories": [
+      "Action Movies",
+      "Comedy Movies",
+      "Drama Movies",
+      "Science Fiction Movies",
+      "Documentary Films",
+      "TV Shows",
+      "Series",
+      "Animated Movies",
+      "Movie Merchandise",
+      "Posters",
+      "Collectibles"
+    ]
+  },
+  {
+    "category": "Music & Instruments",
+    "subcategories": [
+      "Vinyl Records",
+      "CDs",
+      "Music Albums",
+      "Digital Music Downloads",
+      "Guitars",
+      "Keyboards",
+      "Pianos",
+      "Drum Sets",
+      "Wind Instruments",
+      "Saxophones",
+      "Trumpets",
+      "Music Accessories",
+      "Guitar Picks",
+      "Music Stands"
+    ]
+  },
+  {
+    "category": "Necklaces & Pendants",
+    "subcategories": [
+      "Chain Necklaces",
+      "Pendant Necklaces",
+      "Choker Necklaces",
+      "Locket Necklaces",
+      "Statement Necklaces",
+      "Collar Necklaces",
+      "Tassel Necklaces",
+      "Y-Necklaces"
+    ]
+  },
+  {
+    "category": "Office & School Supplies",
+    "subcategories": [
+      "Notebooks",
+      "Notepads",
+      "Pens",
+      "Pencils",
+      "Folders",
+      "Binders",
+      "Sticky Notes",
+      "Page Markers",
+      "Calculators",
+      "Whiteboards",
+      "Dry Erase Markers",
+      "Desk Organizers",
+      "Staplers",
+      "Paper Clips"
+    ]
+  },
+  {
+    "category": "Outdoor & Camping Gear",
+    "subcategories": [
+      "Tents",
+      "Sleeping Bags",
+      "Camping Stoves",
+      "Cookware",
+      "Camping Chairs",
+      "Tables",
+      "Camping Lanterns",
+      "Lights",
+      "Backpacks",
+      "Daypacks",
+      "Hiking Boots",
+      "Footwear",
+      "Camping Tools",
+      "Multi-tools",
+      "Axes",
+      "Camping Food",
+      "Snacks"
+    ]
+  },
+  {
+    "category": "Painting & Drawing Supplies",
+    "subcategories": [
+      "Acrylic Paints",
+      "Oil Paints",
+      "Watercolor Paints",
+      "Sketchbooks",
+      "Art Paper",
+      "Pastels",
+      "Charcoal",
+      "Easels",
+      "Painting Stands",
+      "Brush Sets"
+    ]
+  },
+  {
+    "category": "Party Supplies & Decorations",
+    "subcategories": [
+      "Balloons",
+      "Streamers",
+      "Party Hats",
+      "Masks",
+      "Party Plates",
+      "Napkins",
+      "Favors",
+      "Goodie Bags",
+      "Tablecloths",
+      "Table Covers",
+      "Cake Toppers",
+      "Candles",
+      "Invitations",
+      "Cards",
+      "Pinatas",
+      "Party Games"
+    ]
+  },
+  {
+    "category": "Pet Food & Treats",
+    "subcategories": [
+      "Dry Pet Food",
+      "Wet Pet Food",
+      "Pet Treats",
+      "Chews",
+      "Pet Dental Care Products",
+      "Grain-Free Pet Food",
+      "Pet Supplements",
+      "Freeze-Dried Pet Food",
+      "Limited Ingredient Diets"
+    ]
+  },
+  {
+    "category": "Pet Supplies",
+    "subcategories": [
+      "Pet Collars",
+      "Leashes",
+      "Pet Beds",
+      "Blankets",
+      "Pet Carriers",
+      "Crates",
+      "Cat Scratchers",
+      "Toys",
+      "Dog Toys",
+      "Balls",
+      "Bird Cages",
+      "Perches",
+      "Fish Tanks",
+      "Aquariums",
+      "Reptile Terrariums",
+      "Habitats"
+    ]
+  },
+  {
+    "category": "Personal Care & Grooming",
+    "subcategories": [
+      "Bath",
+      "Shower Products",
+      "Deodorants",
+      "Antiperspirants",
+      "Hair Care Products",
+      "Shampoo",
+      "Conditioner",
+      "Shaving",
+      "Hair Removal Products",
+      "Skin Care Products",
+      "Cleansers",
+      "Moisturizers",
+      "Dental Care Products",
+      "Toothpaste",
+      "Mouthwash",
+      "Feminine Hygiene Products",
+      "Men's Grooming Products"
+    ]
+  },
+  {
+    "category": "Shoes & Footwear",
+    "subcategories": [
+      "Sneakers",
+      "Athletic Shoes",
+      "Boots",
+      "Booties",
+      "Sandals",
+      "Flip Flops",
+      "Flats",
+      "Loafers",
+      "Heels",
+      "Pumps",
+      "Slippers",
+      "Indoor Shoes",
+      "Espadrilles",
+      "Wedges",
+      "Oxfords",
+      "Brogues"
+    ]
+  },
+  {
+    "category": "Skincare & Cosmetics",
+    "subcategories": [
+      "Cleansers",
+      "Face Washes",
+      "Moisturizers",
+      "Creams",
+      "Serums",
+      "Essences",
+      "Sunscreen",
+      "Sunblock",
+      "Facial Masks",
+      "Peels",
+      "Makeup Products",
+      "Foundation",
+      "Lipstick",
+      "Eye Creams",
+      "Serums",
+      "Acne Treatment Products"
+    ]
+  },
+  {
+    "category": "Snacks & Confectionery",
+    "subcategories": [
+      "Chips",
+      "Crisps",
+      "Chocolate Bars",
+      "Candies",
+      "Popcorn",
+      "Pretzels",
+      "Cookies",
+      "Biscuits",
+      "Nuts",
+      "Dried Fruits",
+      "Rice Cakes",
+      "Crackers",
+      "Granola Bars",
+      "Energy Bars",
+      "Gummies",
+      "Chewy Candies"
+    ]
+  },
+  {
+    "category": "Sports & Outdoors",
+    "subcategories": [
+      "Soccer Balls",
+      "Basketballs",
+      "Footballs",
+      "Baseball Bats",
+      "Gloves",
+      "Golf Clubs",
+      "Balls",
+      "Tennis Rackets",
+      "Balls",
+      "Bicycles",
+      "Cycling Gear",
+      "Swimming Goggles",
+      "Caps"
+    ]
+  },
+  {
+    "category": "Suitcases & Luggage Bags",
+    "subcategories": [
+      "Carry-On Luggage",
+      "Checked Luggage",
+      "Travel Duffel Bags",
+      "Backpacks",
+      "Daypacks",
+      "Rolling Luggage",
+      "Garment Bags",
+      "Luggage Sets",
+      "Laptop Backpacks"
+    ]
+  },
+  {
+    "category": "Sunglasses & Eyewear",
+    "subcategories": [
+      "Aviator Sunglasses",
+      "Wayfarer Sunglasses",
+      "Cat-Eye Sunglasses",
+      "Round Sunglasses",
+      "Sports Sunglasses",
+      "Polarized Sunglasses",
+      "Prescription Eyeglasses",
+      "Reading Glasses"
+    ]
+  },
+  {
+    "category": "Swimwear & Beachwear",
+    "subcategories": [
+      "One-Piece Swimsuits",
+      "Bikinis",
+      "Tankinis",
+      "Swim Trunks",
+      "Board Shorts",
+      "Cover-Ups",
+      "Sarongs",
+      "Rash Guards",
+      "Swim Shirts",
+      "Beach Hats",
+      "Caps",
+      "Beach Bags",
+      "Totes",
+      "Beach Towels"
+    ]
+  },
+  {
+    "category": "Team Sports Equipment",
+    "subcategories": [
+      "Soccer Goalposts",
+      "Nets",
+      "Basketball Hoops",
+      "Football Goalposts",
+      "Volleyballs",
+      "Volleyball Nets",
+      "Hockey Sticks",
+      "Goals",
+      "Baseball Bats",
+      "Gloves",
+      "Lacrosse Sticks",
+      "Goals",
+      "Rugby Balls",
+      "Goalposts"
+    ]
+  },
+  {
+    "category": "Toys & Games",
+    "subcategories": [
+      "Action Figures",
+      "Playsets",
+      "Dolls",
+      "Dollhouses",
+      "Board Games",
+      "Puzzles",
+      "Brain Teasers",
+      "Building Blocks",
+      "Construction Sets",
+      "Remote Control Cars",
+      "Drones",
+      "Educational Toys",
+      "STEM Kits",
+      "Toy Vehicles",
+      "Train Sets"
+    ]
+  },
+  {
+    "category": "Travel & Luggage",
+    "subcategories": [
+      "Travel Pillows",
+      "Blankets",
+      "Travel Adapters",
+      "Converters",
+      "Travel Toiletry Bags",
+      "Travel Organizers",
+      "Packing Cubes",
+      "Passport Holders",
+      "Wallets",
+      "Travel Locks",
+      "Security Devices",
+      "Travel Books",
+      "Guides",
+      "Travel Insurance"
+    ]
+  },
+  {
+    "category": "Watches & Timepieces",
+    "subcategories": [
+      "Analog Watches",
+      "Digital Watches",
+      "Smartwatches",
+      "Chronograph Watches",
+      "Dress Watches",
+      "Sports Watches",
+      "Fashion Watches",
+      "Luxury Watches"
+    ]
+  },
+  {
+    "category": "Wine & Spirits",
+    "subcategories": [
+      "Red Wine",
+      "White Wine",
+      "Rosé Wine",
+      "Champagne",
+      "Sparkling Wine",
+      "Whiskey",
+      "Scotch",
+      "Vodka",
+      "Rum",
+      "Tequila",
+      "Gin",
+      "Liqueurs",
+      "Cocktails"
+    ]
+  }
+]
