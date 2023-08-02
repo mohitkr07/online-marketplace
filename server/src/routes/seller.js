@@ -86,7 +86,6 @@ router.post("/api/addproduct", auth, async (req, res) => {
 
   const product = new Product({ ...req.body, owner: req.seller._id });
   try {
-    console.log(product)
     await product.save();
 
     res.status(201).send({ message: true, product });
@@ -115,7 +114,7 @@ router.get("/api/products", auth, async (req, res) => {
     // Use Promise.all with map to wait for all populate operations to complete
     await Promise.all(
       seller.products.map(async (product) => {
-        await product.populate("category");
+        await product.populate("subCategory");
       })
     );
 
@@ -125,5 +124,16 @@ router.get("/api/products", auth, async (req, res) => {
     res.status(500).send(e);
   }
 });
+
+router.delete('/api/deleteproduct/:id', auth, async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await Product.findByIdAndDelete(id);
+
+    res.status(200).send(product)
+  } catch (e) {
+    res.status(500).send({ message: "something went wrong" })
+  }
+})
 
 module.exports = router;

@@ -251,3 +251,59 @@
 .suggestions li:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.remove-button{
+    width: 100%;
+    height: 1.5rem;
+    font-size: 60%;
+    border: none;
+    outline: none;
+    background-color: #014eb2;
+    color: #fff;
+    cursor: pointer;
+}
+.remove-button:hover{
+    background-color: #026af3;
+}
+
+.warning-div{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.25);
+}
+.warning-modal{
+    min-height: 8rem;
+    min-width: 20rem;
+    max-width: 30rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    padding: 0.8rem;
+}
+.warning-modal p{
+    margin: 0.8rem
+}
+
+.warning-modal button{
+    border: none;
+    outline: none;
+    width: 3rem;
+    height: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: 0.15s ease;
+}
+.warning-modal button:hover{
+    background-color: #0069f3;
+    color: #fff;
+}

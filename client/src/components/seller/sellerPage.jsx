@@ -32,8 +32,30 @@ const SellerPage = () => {
     }
   };
 
+
+  const [confirmation, setConfirmation] = useState(false)
+  const handleConfirm = (rec) => {
+    if (rec) {
+      setConfirmation(rec)
+      document.body.style.overflowY = "hidden"
+    }
+  }
+
+  const setOverflow = () => {
+    document.body.style.overflowY = "visible"
+  }
+
   return (
     <>
+      {confirmation && <div className={styles["confirm-div"]}>
+        <div className={styles["confirm-modal"]}>
+          <span>
+            <p>Congratulations!</p>
+            <p>You are now a Seller on City Market</p>
+          </span>
+          <button onClick={() => { setConfirmation(false); setOverflow(); setLogin(true) }}>Thanks</button>
+        </div>
+      </div>}
       <nav className={styles["nav"]}>
         <div className={styles["content"]}>
           <div
@@ -61,7 +83,7 @@ const SellerPage = () => {
       </nav>
       <div className={styles["container"]}>
         <div className={styles["seller-page"]}>
-          {login ? <LoginSeller switchTo={handleSwitch} /> : <RegisterSeller />}
+          {login ? <LoginSeller switchTo={handleSwitch} /> : <RegisterSeller confirm={handleConfirm} />}
         </div>
       </div>
     </>

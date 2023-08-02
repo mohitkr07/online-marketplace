@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./sellerAuth.module.css";
 
-const RegisterSeller = () => {
+const RegisterSeller = (props) => {
   const [sellerInfo, setSellerInfo] = useState({
     name: "",
     email: "",
@@ -30,8 +30,9 @@ const RegisterSeller = () => {
     });
     console.log(sellerInfo.address[e.target.name]);
   };
-  const handleSubmit = () => {
-    postData();
+  const handleSubmit = async () => {
+    await postData();
+    props.confirm(true)
   };
 
   const postData = async () => {
