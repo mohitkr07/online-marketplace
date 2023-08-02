@@ -40,7 +40,7 @@ const Login = (props) => {
   };
 
   const authswitch = () => {
-    props.switchTo(true);
+    props.signupSwitch(true);
   };
 
   return (

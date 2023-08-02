@@ -28,15 +28,29 @@ app.listen(port, () => {
   console.log("Server is running on port", port);
 });
 
+const Category = require("./src/models/category")
 const Product = require("./src/models/product");
 const Seller = require("./src/models/seller");
-const Category = require("./src/models/category")
 const SubCategory = require("./src/models/subCat")
 
 const main = async () => {
-  const category = await Category.findById("64c82d4f2d3c8a820ae761f7")
-  await category.populate('subCategories')
-  console.log(category)
+  const term = "electronic"
+  const categories = await Category.find({ name: { $regex: term, $options: 'i' } })
+  // const categories = await Category.find({})
+
+  // categories.forEach(async category=>{
+  //   if (category.name.toLowerCase().includes(term.toLowerCase()))
+  //   {
+  //     await category.populate('products')
+  //     console.log(category)
+  //   }
+  // })
+  console.log(categories)
+
+  // const category = await Category.findById('64c82d4f2d3c8a820ae76201').populate('products')
+
+  // console.log(category)
+
 };
 
 // main();

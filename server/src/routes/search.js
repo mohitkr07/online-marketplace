@@ -8,9 +8,33 @@ const Seller = require("../models/seller")
 const auth = require("../middleware/sellerAuth")
 
 
-router.get("/api/search", async (req, res) => {
-    res.send("hi")
+router.get("/api/search/:term", async (req, res) => {
+    const term = req.params.term;
+    try {
+        const subcategories = await SubCategory.find({ name: { $regex: term, $options: 'i' } });
+
+        let response = [];
+        // Tip: Use for...of loop to ensure sequential execution of async operations
+        for (const subcat of subcategories) {
+            await subcat.populate('products');
+            response = response.concat(subcat.products)
+        }
+        
+        if (response.length == 0) {
+            const categories = await Category.find({ name: { $regex: term, $options: 'i' } });
+            for (const category of categories) {
+                await category.populate('products');
+                response = response.concat(category.products)
+            }
+        }
+        res.send({ message: true, products: response });
+    } catch (e) {
+        res.status(500).send({ message: "something went wrong" });
+    }
 })
+
+
+//categories & catalog APIs
 
 router.get("/api/getcategories", auth, async (req, res) => {
     try {
@@ -28,7 +52,7 @@ router.post("/api/getsubcat", auth, async (req, res) => {
         const category = await Category.findById({ _id: cat })
         await category.populate('subCategories')
 
-        res.status(200).send({message: true, subCat: category.subCategories })
+        res.status(200).send({ message: true, subCat: category.subCategories })
     } catch (e) {
         res.status(500).sen({ error: "something went wrong" })
     }

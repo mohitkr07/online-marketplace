@@ -6,7 +6,7 @@ const Signup = (props) => {
   const [signupData, setSignup] = useState({
     firstName: "",
     lastName: "",
-    mobile: "+91 ",
+    mobile: "",
     email: "",
     password: "",
   });

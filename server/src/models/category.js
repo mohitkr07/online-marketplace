@@ -18,6 +18,13 @@ categoryShecma.virtual('subCategories', {
     foreignField: 'category'
 })
 
+categoryShecma.virtual('products',{
+    ref: 'Product',
+    localField: '_id',
+    foreignField: 'category'
+})
+
+
 const Category = mongoose.model("Category", categoryShecma)
 
 module.exports = Category

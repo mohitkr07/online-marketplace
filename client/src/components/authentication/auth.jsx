@@ -19,6 +19,7 @@ const Auth = (props) => {
 
   const authSwitch = (rec) => {
     setNewUser(rec);
+    console.log(newUser)
   };
 
   //to close the login window and navigate to home
@@ -31,10 +32,10 @@ const Auth = (props) => {
     <div onClick={closeModal} className={styles["container"]}>
       <div className={styles["auth"]}>
         <div className={styles["auth-left"]}></div>
-        {!newUser ? (
+        {newUser ? (
           <Signup switchTo={authSwitch} />
         ) : (
-          <Login Logged={closeAuth} switchTo={authSwitch} />
+          <Login Logged={closeAuth} signupSwitch={authSwitch} />
         )}
       </div>
     </div>

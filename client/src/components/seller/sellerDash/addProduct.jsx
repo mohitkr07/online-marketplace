@@ -9,7 +9,7 @@ const AddProduct = () => {
     description: "",
     category: "",
     subcategoryName: "",
-    subcategory_id: "",
+    subCategory: "",
   });
 
   const [categories, setCategories] = useState([])
@@ -45,7 +45,7 @@ const AddProduct = () => {
     });
     const data = await res.json();
     if (data.message) {
-      setProduct({ ...product, categoryName: "", name: "", price: "", description: "" })
+      setProduct({ ...product, categoryName: "", name: "", price: "", subcategoryName: "", description: "" })
       alert("product added successfully")
       // console.log(data.product)
     }
@@ -111,7 +111,6 @@ const AddProduct = () => {
     if (flag)
       console.log('Select Category First')
 
-
   }
 
 
@@ -126,8 +125,8 @@ const AddProduct = () => {
       // Update the subSugg state after another 10ms
       setTimeout(() => {
         setSubSugg(false);
-      }, 10);
-    }, 100);
+      }, 0);
+    }, 500);
   };
 
   const [viewSubSugg, setSubSugg] = useState(false)
@@ -157,7 +156,11 @@ const AddProduct = () => {
                   return <li
                     ref={myElementRef}
                     // onFocus={()=>{setSubSugg(false)}}
-                    onClick={() => { setProduct({ ...product, categoryName: i.name, category: i._id }); setSubSugg(false) }}
+                    onClick={() => {
+                      setProduct({ ...product, categoryName: i.name, category: i._id }); setTimeout(() => {
+                        setSubSugg(false)
+                      }, 100);
+                    }}
                     key={key}
                   >
                     {i.name}
@@ -179,7 +182,7 @@ const AddProduct = () => {
               onFocus={handleFocus}
               onBlur={() => setTimeout(() => {
                 setSubSugg(false)
-              }, 100)}
+              }, 1000)}
 
             />
             <div className={styles["result"]}>
@@ -187,7 +190,7 @@ const AddProduct = () => {
                 {subCategories.map((i, key) => {
                   return <li
                     onClick={() => {
-                      setProduct({ ...product, subcategoryName: i.name, subcategory_id: i._id }); setTimeout(() => {
+                      setProduct({ ...product, subcategoryName: i.name, subCategory: i._id }); setTimeout(() => {
                         setSubSugg(false)
                       }, 10);
                     }}

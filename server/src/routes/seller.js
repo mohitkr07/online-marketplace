@@ -72,6 +72,16 @@ router.get("/api/seller/logoutall", auth, async (req, res) => {
 
 // product API
 
+// {
+//   categoryName: "",
+//   name: "",
+//   price: "",
+//   description: "",
+//   category: "",
+//   subcategoryName: "",
+//   subcategory_id: "",
+// }
+
 router.post("/api/addproduct", auth, async (req, res) => {
 
   const product = new Product({ ...req.body, owner: req.seller._id });

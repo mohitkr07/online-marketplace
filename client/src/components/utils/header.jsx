@@ -44,8 +44,7 @@ const Header = (props) => {
       },
     });
     const data = await res.json()
-    if (data.message)
-    {
+    if (data.message) {
       setLog(false);
       setProfile(null)
     }
@@ -68,6 +67,26 @@ const Header = (props) => {
     navigate("/citypage");
   };
 
+
+  // searching
+  const [term, setTerm] = useState("")
+
+  const searchResults = async (term) => {
+    const res = await fetch(`/api/search/${term}`, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const result = await res.json();
+    console.log(result)
+  }
+
+  const handleSearchClick = (e) => {
+    searchResults(term)
+  }
+
   return (
     <>
       {showAuth && <Auth onClick={closeAuth} />}
@@ -84,11 +103,16 @@ const Header = (props) => {
             </div>
 
             <div className={styles["header-search"]}>
-              <input type="text" placeholder="Find in your Market" />
+              <input type="text"
+                placeholder="Find in your Market"
+                value={term}
+                onChange={(e) => { setTerm(e.target.value) }} />
+              <a onClick={handleSearchClick}>
               <i
                 style={{ margin: "0 15px" }}
                 className="fa-solid fa-magnifying-glass"
               ></i>
+              </a>
             </div>
           </div>
           <div className={styles["header-actions"]}>
