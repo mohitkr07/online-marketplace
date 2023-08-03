@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./utils.module.css";
 import Auth from "../authentication/auth";
+import { storeSearchRes } from "../../actions";
+import { getSearchRes } from "../../actions/searchRes";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = (props) => {
+  const dispatch = useDispatch()
+  const myState = useSelector((state) => state.storeRes)
   const navigate = useNavigate();
   const [log, setLog] = useState(false);
   const [showAuth, setAuth] = useState(false);
@@ -69,7 +74,9 @@ const Header = (props) => {
 
 
   // searching
+  // const [searchRes, setSearchRes] = useState([])
   const [term, setTerm] = useState("")
+  const [showHome, setHome] = useState("")
 
   const searchResults = async (term) => {
     const res = await fetch(`/api/search/${term}`, {
@@ -80,12 +87,20 @@ const Header = (props) => {
       },
     })
     const result = await res.json();
-    console.log(result)
+    if (result.message) {
+      dispatch((storeSearchRes(result.products)))
+      navigate('/search')
+    }
+    // setSearchRes(result.products)
   }
 
-  const handleSearchClick = (e) => {
-    searchResults(term)
+  const handleSearchClick = async (e) => {
+    await searchResults(term)
   }
+
+  // const check = () => {
+  //   console.log(myState)
+  // }
 
   return (
     <>
@@ -108,10 +123,10 @@ const Header = (props) => {
                 value={term}
                 onChange={(e) => { setTerm(e.target.value) }} />
               <a onClick={handleSearchClick}>
-              <i
-                style={{ margin: "0 15px" }}
-                className="fa-solid fa-magnifying-glass"
-              ></i>
+                <i
+                  style={{ margin: "0 15px" }}
+                  className="fa-solid fa-magnifying-glass"
+                ></i>
               </a>
             </div>
           </div>

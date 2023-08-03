@@ -23,7 +23,7 @@ const Login = (props) => {
     props.Logged(false);
   };
 
-  const postData = async (e) => {
+  const postData = async () => {
     const res = await fetch("/api/login", {
       method: "post",
       credentials: "include",
@@ -38,6 +38,10 @@ const Login = (props) => {
       navigate("/");
     }
   };
+
+  const reduxLogin = ()=>{
+    
+  }
 
   const authswitch = () => {
     props.signupSwitch(true);

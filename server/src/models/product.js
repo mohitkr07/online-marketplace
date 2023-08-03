@@ -23,6 +23,15 @@ const productSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  comparePrice: {
+    type: Number,
+
+  },
+  features: [
+    {
+      type: String,
+    }
+  ],
   description: {
     type: String,
     required: true,
@@ -32,7 +41,7 @@ const productSchema = new mongoose.Schema({
     required: true,
     ref: 'Category'
   },
-  subCategory:{
+  subCategory: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'SubCategory'
@@ -43,6 +52,16 @@ const productSchema = new mongoose.Schema({
     required: true,
     ref: 'Seller',
   },
+  ratings: [
+    {
+      rateOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+      ratingValue: Number,
+    }
+  ],
+  numberOfRatings: {
+    type: Number,
+    default: 0
+  }
 });
 
 
