@@ -64,6 +64,7 @@ const MyProducts = () => {
               <th>Sr No.</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Compare Price</th>
               <th>Type</th>
               <th>Product Link</th>
               <th>Remove</th>
@@ -73,6 +74,7 @@ const MyProducts = () => {
                 <td>{srNo++}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
+                <td>{product.comparePrice}</td>
                 <td>{product.subCategory.name}</td>
                 <td>
                   <a href="#">view</a>

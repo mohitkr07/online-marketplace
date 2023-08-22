@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./utils.module.css";
 import Auth from "../authentication/auth";
-import { storeSearchRes } from "../../actions";
-import { getSearchRes } from "../../actions/searchRes";
+// import { storeSearchRes } from "../../actions";
+// import { getSearchRes } from "../../actions/searchRes";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = (props) => {
-  const dispatch = useDispatch()
-  const myState = useSelector((state) => state.storeRes)
+  // const dispatch = useDispatch()
+  // const myState = useSelector((state) => state.storeRes)
   const navigate = useNavigate();
   const [log, setLog] = useState(false);
   const [showAuth, setAuth] = useState(false);
@@ -74,33 +74,11 @@ const Header = (props) => {
 
 
   // searching
-  // const [searchRes, setSearchRes] = useState([])
-  const [term, setTerm] = useState("")
-  const [showHome, setHome] = useState("")
-
-  const searchResults = async (term) => {
-    const res = await fetch(`/api/search/${term}`, {
-      method: 'get',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-    const result = await res.json();
-    if (result.message) {
-      dispatch((storeSearchRes(result.products)))
-      navigate('/search')
-    }
-    // setSearchRes(result.products)
-  }
+  const [term, setTerm] = useState(window.location.search.substring(6))
 
   const handleSearchClick = async (e) => {
-    await searchResults(term)
+    window.location.href = (`/search?item=${encodeURIComponent(term)}`)
   }
-
-  // const check = () => {
-  //   console.log(myState)
-  // }
 
   return (
     <>

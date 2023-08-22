@@ -50,7 +50,6 @@ router.get("/api/seller/verify", auth, async (req, res) => {
 
 router.get("/api/seller/logout", auth, async (req, res) => {
   try {
-    console.log(req.seller.tokens);
     req.seller.tokens = req.seller.tokens.filter((token) => {
       return token.token !== req.token;
     });
@@ -118,7 +117,6 @@ router.get("/api/products", auth, async (req, res) => {
       })
     );
 
-    // console.log(seller.products);
     res.status(201).send(seller.products);
   } catch (e) {
     res.status(500).send(e);

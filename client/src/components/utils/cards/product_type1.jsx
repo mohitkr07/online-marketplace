@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./cards.module.css";
 import styles1 from "./product.module.css";
 
 const Product_type1 = (props) => {
+  const navigate = useNavigate()
   const [rateColor, setColor] = useState("");
 
   useEffect(() => {
@@ -18,17 +20,21 @@ const Product_type1 = (props) => {
     else if (rate <= 1) setColor("#ff4545");
   };
 
+  const handleClick = () => {
+    navigate('/search/productPage')
+  }
+
   return (
     <div className={`${styles["product-card"]} ${styles1["product-card"]}`}>
-      <div className={`${styles["product-pic"]} ${styles1["product-pic"]}`}>
+      <div onClick={handleClick} className={`${styles["product-pic"]} ${styles1["product-pic"]}`}>
         <img src={props.src} />
       </div>
       <div className={`${styles["product-description"]} ${styles1["product-description"]}`}>
-        <div className={`${styles["product-name"]} ${styles1["product-name"]}`}>
+        <div onClick={handleClick} className={`${styles["product-name"]} ${styles1["product-name"]}`}>
           <p>{props.product_name.substr(0, 60)}</p>
         </div>
         <div className={styles1["speciality"]}>
-            <p>{props.speciality}</p>
+          <p>{props.speciality}</p>
         </div>
         <div className={`${styles["product-rating"]} ${styles1["product-rating"]}`}>
           <span
@@ -42,7 +48,7 @@ const Product_type1 = (props) => {
             ({props.ratingCount})
           </span>
         </div>
-        <div className={`${styles["product-price"]} ${styles1["product-price"]}`}>
+        <div onClick={handleClick} className={`${styles["product-price"]} ${styles1["product-price"]}`}>
           <p style={{ fontWeight: "bold" }}>
             ₹{props.price}{" "}
             <span

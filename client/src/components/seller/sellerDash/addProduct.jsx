@@ -6,6 +6,7 @@ const AddProduct = () => {
     categoryName: "",
     name: "",
     price: "",
+    comparePrice: "",
     description: "",
     category: "",
     subcategoryName: "",
@@ -220,6 +221,16 @@ const AddProduct = () => {
             placeholder="Enter price"
             name="price"
             value={product.price}
+            onChange={handleChange}
+          ></input>
+        </span>
+        <span>
+          <p>Compare Price: </p>
+          <input
+            type="text"
+            placeholder="Enter Compare Price"
+            name="comparePrice"
+            value={product.comparePrice}
             onChange={handleChange}
           ></input>
         </span>
