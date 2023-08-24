@@ -6,6 +6,7 @@ const SubCategory = require('../models/subCat')
 const Seller = require("../models/seller")
 
 const auth = require("../middleware/sellerAuth")
+const zlib = require("zlib")
 
 
 router.get("/api/search/:term", async (req, res) => {
@@ -19,7 +20,7 @@ router.get("/api/search/:term", async (req, res) => {
             await subcat.populate('products');
             response = response.concat(subcat.products)
         }
-        
+
         if (response.length == 0) {
             const categories = await Category.find({ name: { $regex: term, $options: 'i' } });
             for (const category of categories) {
@@ -27,9 +28,41 @@ router.get("/api/search/:term", async (req, res) => {
                 response = response.concat(category.products)
             }
         }
+
+        response.forEach(prod => {
+            prod.image = zlib.unzipSync(prod.image);
+        })
+
         res.send({ message: true, products: response });
     } catch (e) {
         res.status(500).send({ message: "something went wrong" });
+    }
+})
+
+router.get('/api/categorywise/:category', async (req, res) => {
+    const term = req.params.category;
+    try {
+        // console.log(term);
+        let response = [];
+
+        if (response.length == 0) {
+            const categories = await Category.find({ name: { $regex: term, $options: 'i' } });
+            for (const category of categories) {
+                await category.populate('products');
+                response = response.concat(category.products)
+            }
+        }
+        response = response.slice(0, 10)
+
+        response.forEach(prod => {
+            prod.image = zlib.unzipSync(prod.image);
+        })
+
+
+        res.send({ message: true, products: response })
+
+    } catch (e) {
+        res.status(500).send({ message: "something went wrong" })
     }
 })
 

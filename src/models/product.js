@@ -61,7 +61,12 @@ const productSchema = new mongoose.Schema({
   numberOfRatings: {
     type: Number,
     default: 0
+  },
+  image: {
+    type: Buffer,
+    // required: true
   }
+
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -3,6 +3,12 @@ const router = express.Router();
 const Seller = require("../models/seller");
 const Product = require("../models/product");
 const auth = require("../middleware/sellerAuth");
+const multer = require("multer");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+const zlib = require('zlib')
+
 
 router.get("/api/seller", auth, async (req, res) => {
   try {
@@ -81,13 +87,18 @@ router.get("/api/seller/logoutall", auth, async (req, res) => {
 //   subcategory_id: "",
 // }
 
-router.post("/api/addproduct", auth, async (req, res) => {
 
-  const product = new Product({ ...req.body, owner: req.seller._id });
+router.post("/api/addproduct", auth, upload.single('image'), async (req, res) => {
+
   try {
+    const textData = JSON.parse(req.body.text)
+    const imageData = zlib.gzipSync(req.file.buffer);
+
+    const data = { ...textData, owner: req.seller._id, image: imageData }
+    const product = new Product({ ...textData, owner: req.seller._id, image: imageData });
     await product.save();
 
-    res.status(201).send({ message: true, product });
+    res.status(201).send({ data, message: true, product });
   } catch (e) {
     res.status(500).send(false);
   }
@@ -122,6 +133,8 @@ router.get("/api/products", auth, async (req, res) => {
     res.status(500).send(e);
   }
 });
+
+
 
 router.delete('/api/deleteproduct/:id', auth, async (req, res) => {
   const id = req.params.id;
