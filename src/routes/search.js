@@ -52,12 +52,12 @@ router.get('/api/categorywise/:category', async (req, res) => {
                 response = response.concat(category.products)
             }
         }
+        response.sort(() => Math.random() - 0.5);
         response = response.slice(0, 10)
 
         response.forEach(prod => {
             prod.image = zlib.unzipSync(prod.image);
         })
-
 
         res.send({ message: true, products: response })
 
@@ -88,6 +88,21 @@ router.post("/api/getsubcat", auth, async (req, res) => {
         res.status(200).send({ message: true, subCat: category.subCategories })
     } catch (e) {
         res.status(500).sen({ error: "something went wrong" })
+    }
+})
+
+
+router.get('/api/product/:id', async (req, res) => {
+    try {
+        const _id = req.params.id;
+
+
+        const product = await Product.findById({ _id });
+        product.image = zlib.unzipSync(product.image);
+
+        res.status(200).send({ message: "true", product });
+    } catch (e) {
+        res.status(500).send({ message: "something went wrong" })
     }
 })
 
